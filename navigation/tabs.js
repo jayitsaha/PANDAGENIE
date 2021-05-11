@@ -59,7 +59,10 @@ const TabBarCustomButton = ({accessibilityState, children, onPress}) => {
 
 const Tabs = () => {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      tabBarOptions={{
+        showLabel: false,
+      }}>
       <Tab.Screen
         name="Home"
         component={Home}
