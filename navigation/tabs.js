@@ -6,6 +6,7 @@ import {
 } from '@react-navigation/bottom-tabs';
 import {Home} from '../screens';
 import {COLORS, icons} from '../constants';
+import Svg, {Path} from 'react-native-svg';
 
 const Tab = createBottomTabNavigator();
 
@@ -78,7 +79,7 @@ const Tabs = () => {
               }}
             />
           ),
-          //   tabBarButton: props => <TabBarCustomButton {...props} />,
+          tabBarButton: props => <TabBarCustomButton {...props} />,
         }}
       />
     </Tab.Navigator>
