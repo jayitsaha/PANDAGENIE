@@ -463,8 +463,29 @@ const Home = () => {
 
     return (
       <View style={{padding: SIZES.padding * 2}}>
-        <Text style={{...FONTS.h1}}>Main</Text>
-        <Text style={{...FONTS.h1}}>Categories</Text>
+        <View
+          style={{
+            // flex: 1,
+            // backgroundColor: COLORS.white,
+            flexDirection: 'row',
+            justifyContent: 'center',
+            // marginBottom: 100,
+          }}>
+          <Image
+            source={icons.panda}
+            resizeMode="contain"
+            style={{
+              width: 100,
+              height: 100,
+              justifyContent: 'center',
+            }}
+          />
+          <Text style={{...FONTS.h1, justifyContent: 'center', paddingTop: 40}}>
+            GENIE
+          </Text>
+        </View>
+
+        {/* <Text style={{...FONTS.h1}}>Main Categories</Text> */}
 
         <FlatList
           data={categories}
