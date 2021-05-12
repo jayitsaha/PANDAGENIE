@@ -462,7 +462,7 @@ const Home = () => {
     };
 
     return (
-      <View style={{padding: SIZES.padding * 2}}>
+      <View style={{}}>
         <View
           style={{
             // flex: 1,
@@ -488,6 +488,11 @@ const Home = () => {
         {/* <Text style={{...FONTS.h1}}>Main Categories</Text> */}
 
         <FlatList
+          style={{
+            padding: SIZES.padding * 2,
+            paddingTop: 0,
+            paddingBottom: SIZES.padding * 1,
+          }}
           data={categories}
           horizontal
           showsHorizontalScrollIndicator={false}
@@ -503,7 +508,10 @@ const Home = () => {
     const renderItem = ({item}) => (
       <TouchableOpacity
         style={{marginBottom: SIZES.padding * 3, padding: SIZES.padding}}
-        onPress={() => console.log('Restaurant')}>
+        onPress={() => navigation.navigate("Restaurant", {
+          item,
+          currentLocation
+      })}>
         {/* Image */}
         <View
           style={{
