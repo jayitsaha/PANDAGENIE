@@ -1,3 +1,9 @@
-import Home from './Home';
+import Home from './Home'
+import Restaurant from './Restaurant'
+import OrderDelivery from './OrderDelivery'
 
-export {Home};
+export {
+    Home,
+    Restaurant,
+    OrderDelivery
+}
