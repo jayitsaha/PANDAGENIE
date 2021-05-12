@@ -396,22 +396,22 @@ const Home = () => {
         <TouchableOpacity
           style={{
             padding: SIZES.padding,
+            height: 150,
             paddingBottom: SIZES.padding * 2,
             backgroundColor:
               selectedCategory?.id == item.id ? COLORS.primary : COLORS.white,
-            borderRadius: SIZES.radius,
+            borderRadius: SIZES.radius * 2,
             alignItems: 'center',
             justifyContent: 'center',
             marginRight: SIZES.padding,
             ...styles.shadow,
           }}
-          // onPress={() => onSelectCategory(item)}
-        >
+          onPress={() => onSelectCategory(item)}>
           <View
             style={{
-              width: 50,
-              height: 50,
-              borderRadius: 25,
+              width: 80,
+              height: 80,
+              borderRadius: 65,
               alignItems: 'center',
               justifyContent: 'center',
               backgroundColor:
