@@ -325,14 +325,33 @@ const Home = () => {
       ],
     },
   ];
-
+  const defautCategoryId = {icon: 21, id: 1, name: 'Rice'};
   const [categories, setCategories] = React.useState(categoryData);
-  const [selectedCategory, setSelectedCategory] = React.useState(null);
+  const [selectedCategory, setSelectedCategory] =
+    React.useState(defautCategoryId);
   const [restaurants, setRestaurants] = React.useState(restaurantData);
   const [currentLocation, setCurrentLocation] = React.useState(
     initialCurrentLocation,
   );
 
+  function onSelectCategory(category) {
+    // filter restaurant
+    console.log(category);
+    let restaurantList = restaurantData.filter(a =>
+      a.categories.includes(category.id),
+    );
+    setRestaurants(restaurantList);
+    // select category
+    setSelectedCategory(category);
+  }
+
+  function getCategoryNameById(id) {
+    let category = categories.filter(a => a.id == id);
+
+    if (category.length > 0) return category[0].name;
+
+    return '';
+  }
   function renderHeader() {
     return (
       <View style={{flexDirection: 'row', height: 50, marginTop: 15}}>
