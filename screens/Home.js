@@ -326,9 +326,66 @@ const Home = () => {
     },
   ];
 
+  function renderHeader() {
+    return (
+      <View style={{flexDirection: 'row', height: 50, marginTop: 15}}>
+        <TouchableOpacity
+          style={{
+            width: 50,
+            paddingLeft: SIZES.padding * 2,
+            justifyContent: 'center',
+          }}
+          onPress={() => console.log('Nearby')}>
+          <Image
+            source={icons.nearby}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30,
+            }}
+          />
+        </TouchableOpacity>
+
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+          <View
+            style={{
+              width: '70%',
+              height: '100%',
+              backgroundColor: COLORS.lightGray3,
+              alignItems: 'center',
+              justifyContent: 'center',
+              borderRadius: SIZES.radius,
+            }}>
+            <Text
+              style={{...FONTS.h4, color: COLORS.darkgray, fontWeight: 'bold'}}>
+              {initialCurrentLocation.streetName}
+            </Text>
+          </View>
+        </View>
+
+        <TouchableOpacity
+          style={{
+            width: 50,
+            paddingRight: SIZES.padding * 2,
+            justifyContent: 'center',
+          }}
+          onPress={() => console.log('Basket')}>
+          <Image
+            source={icons.basket}
+            resizeMode="contain"
+            style={{
+              width: 30,
+              height: 30,
+            }}
+          />
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
-      {/* {renderHeader()} */}
+      {renderHeader()}
       {/* {renderMainCategories()}
       {renderRestaurantList()} */}
     </SafeAreaView>
