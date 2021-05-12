@@ -83,7 +83,7 @@ const Home = () => {
   const restaurantData = [
     {
       id: 1,
-      name: 'ByProgrammers Burger',
+      name: 'Panda Burger',
       rating: 4.8,
       categories: [5, 7],
       priceRating: affordable,
@@ -126,7 +126,7 @@ const Home = () => {
     },
     {
       id: 2,
-      name: 'ByProgrammers Pizza',
+      name: 'Panda Pizza',
       rating: 4.8,
       categories: [2, 4, 6],
       priceRating: expensive,
@@ -178,7 +178,7 @@ const Home = () => {
     },
     {
       id: 3,
-      name: 'ByProgrammers Hotdogs',
+      name: 'Panda Hotdogs',
       rating: 4.8,
       categories: [3],
       priceRating: expensive,
@@ -205,7 +205,7 @@ const Home = () => {
     },
     {
       id: 4,
-      name: 'ByProgrammers Sushi',
+      name: 'Panda Sushi',
       rating: 4.8,
       categories: [8],
       priceRating: expensive,
@@ -232,7 +232,7 @@ const Home = () => {
     },
     {
       id: 5,
-      name: 'ByProgrammers Cuisine',
+      name: 'Panda Cuisine',
       rating: 4.8,
       categories: [1, 2],
       priceRating: affordable,
@@ -283,7 +283,7 @@ const Home = () => {
     },
     {
       id: 6,
-      name: 'ByProgrammers Dessets',
+      name: 'Panda Dessets',
       rating: 4.9,
       categories: [9, 10],
       priceRating: affordable,
@@ -499,12 +499,117 @@ const Home = () => {
     );
   }
 
+  function renderRestaurantList() {
+    const renderItem = ({item}) => (
+      <TouchableOpacity
+        style={{marginBottom: SIZES.padding * 3, padding: SIZES.padding}}
+        onPress={() => console.log('Restaurant')}>
+        {/* Image */}
+        <View
+          style={{
+            height: 200,
+            marginBottom: SIZES.padding,
+          }}>
+          <Image
+            source={item.photo}
+            resizeMode="cover"
+            style={{
+              width: '100%',
+              height: 200,
+              // padding: 100,
+              borderRadius: SIZES.radius,
+            }}
+          />
+          <View
+            style={{
+              position: 'absolute',
+              bottom: 0,
+              height: 45,
+              width: SIZES.width * 0.3,
+              backgroundColor: COLORS.white,
+              borderTopRightRadius: SIZES.radius,
+              borderBottomLeftRadius: SIZES.radius,
+              alignItems: 'center',
+              justifyContent: 'center',
+              ...styles.shadow,
+            }}>
+            <Text style={{...FONTS.h4}}>{item.duration}</Text>
+          </View>
+        </View>
+
+        {/* Restaurant Info */}
+        <Text style={{...FONTS.body2}}>{item.name}</Text>
+
+        <View
+          style={{
+            marginTop: SIZES.padding,
+            flexDirection: 'row',
+          }}>
+          {/* Rating */}
+          <Image
+            source={icons.star}
+            style={{
+              height: 20,
+              width: 20,
+              tintColor: COLORS.primary,
+              marginRight: 10,
+            }}
+          />
+          <Text style={{...FONTS.body3}}>{item.rating}</Text>
+
+          {/* Restaurant Categories */}
+          <View style={{flexDirection: 'row', marginLeft: 10}}>
+            {/* Categories */}
+            {item.categories.map(categoryId => {
+              return (
+                <View style={{flexDirection: 'row'}} key={categoryId}>
+                  <Text style={{...FONTS.body3}}>
+                    {getCategoryNameById(categoryId)}
+                  </Text>
+                  <Text style={{...FONTS.h3, color: COLORS.darkgray}}> · </Text>
+                </View>
+              );
+            })}
+
+            {/* Price */}
+            {[1, 2, 3].map(priceRating => (
+              <Text
+                key={priceRating}
+                style={{
+                  ...FONTS.body3,
+                  color:
+                    priceRating <= item.priceRating
+                      ? COLORS.black
+                      : COLORS.darkgray,
+                }}>
+                $
+              </Text>
+            ))}
+          </View>
+        </View>
+      </TouchableOpacity>
+    );
+
+    return (
+      <FlatList
+        contentContainerStyle={{
+          paddingHorizontal: SIZES.padding * 2,
+          paddingBottom: 30,
+        }}
+        data={restaurants}
+        keyExtractor={item => `${item.id}`}
+        renderItem={renderItem}
+      />
+    );
+  }
+
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
+
       {renderMainCategories()}
-      {/* 
-      {renderRestaurantList()} */}
+
+      {renderRestaurantList()}
     </SafeAreaView>
   );
 };
