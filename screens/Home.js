@@ -405,7 +405,8 @@ const Home = () => {
             marginRight: SIZES.padding,
             ...styles.shadow,
           }}
-          onPress={() => onSelectCategory(item)}>
+          // onPress={() => onSelectCategory(item)}
+        >
           <View
             style={{
               width: 50,
@@ -461,7 +462,8 @@ const Home = () => {
   return (
     <SafeAreaView style={styles.container}>
       {renderHeader()}
-      {/* {renderMainCategories()}
+      {renderMainCategories()}
+      {/* 
       {renderRestaurantList()} */}
     </SafeAreaView>
   );
